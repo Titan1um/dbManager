@@ -14,10 +14,10 @@ import java.util.Stack;
 public class User {
 	private int id;
 	private String access_token;
-	private int member_id;
-	private int yiban_id;
-	private int assosiation;
-	private int position;
+	private String member_id;
+	private String yiban_id;
+	private String assosiation;
+	private String position;
 	private String password;
 	private String user;
 	private String head;
@@ -29,10 +29,10 @@ public class User {
 			User user = new User();
 			user.setId(res.getInt("id"));
 			user.setAccess_token(res.getString("access_token"));
-			user.setMember_id(res.getInt("member_id"));
-			user.setYiban_id(res.getInt("yiban_id"));
-			user.setAssosiation(res.getInt("assosiation"));
-			user.setPosition(res.getInt("position"));
+			user.setMember_id(res.getString("member_id"));
+			user.setYiban_id(res.getString("yiban_id"));
+			user.setAssosiation(res.getString("assosiation"));
+			user.setPosition(res.getString("position"));
 			user.setPassword(res.getString("password"));
 			user.setUser(res.getString("user"));
 			user.setHead(res.getString("head"));
@@ -47,10 +47,10 @@ public class User {
 		User user = new User();
 		user.setId(json.optInt("id"));
 		user.setAccess_token(json.optString("access_token"));
-		user.setMember_id(json.optInt("member_id"));
-		user.setYiban_id(json.optInt("yiban_id"));
-		user.setAssosiation(json.optInt("assosiation"));
-		user.setPosition(json.optInt("position"));
+		user.setMember_id(json.optString("member_id"));
+		user.setYiban_id(json.optString("yiban_id"));
+		user.setAssosiation(json.optString("assosiation"));
+		user.setPosition(json.optString("position"));
 		user.setPassword(json.optString("password"));
 		user.setUser(json.optString("user"));
 		user.setHead(json.optString("head"));
@@ -74,35 +74,35 @@ public class User {
 		this.access_token = access_token;
 	}
 
-	public int getMember_id() {
+	public String getMember_id() {
 		return member_id;
 	}
 
-	public void setMember_id(int member_id) {
+	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
 
-	public int getYiban_id() {
+	public String getYiban_id() {
 		return yiban_id;
 	}
 
-	public void setYiban_id(int yiban_id) {
+	public void setYiban_id(String yiban_id) {
 		this.yiban_id = yiban_id;
 	}
 
-	public int getAssosiation() {
+	public String getAssosiation() {
 		return assosiation;
 	}
 
-	public void setAssosiation(int assosiation) {
+	public void setAssosiation(String assosiation) {
 		this.assosiation = assosiation;
 	}
 
-	public int getPosition() {
+	public String getPosition() {
 		return position;
 	}
 
-	public void setPosition(int position) {
+	public void setPosition(String position) {
 		this.position = position;
 	}
 

@@ -37,7 +37,7 @@ public class TestDBManager {
 	@Test
 	public void testDeleteAssosiation() {
 		Assosiation assosiation = new Assosiation();
-		assosiation.setChair(0);
+		assosiation.setChair("0");
 		assosiation.setTeacher("");
 		try {
 			dbManger.deleteAssosiation(7);
@@ -68,7 +68,7 @@ public class TestDBManager {
 	public void testInsertMember() {
 		//改版后insert不用model用String
 		Member member = new Member();
-		member.setYiban_id(2015081037);
+		member.setYiban_id("2015081037");
 
 		dbManger.insertMember("{'yiban_id':2015081037}");
 	}
@@ -77,8 +77,8 @@ public class TestDBManager {
 	public void testUpdateMember() {
 		//改版后insert不用model用String
 		Member member = new Member();
-		member.setYiban_id(2015081037);
-		member.setGrade(4);
+		member.setYiban_id("2015081037");
+		member.setGrade("4");
 		dbManger.updateMember("{'yiban_id':2015081037,'grade':4}");
 	}
 

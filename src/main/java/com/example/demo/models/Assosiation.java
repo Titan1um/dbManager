@@ -16,7 +16,7 @@ public class Assosiation{
 	private int id;
 	private String name;
 	private String information;
-	private int chair;
+	private String chair;
 	private String teacher;
 	private String teacher_tel;
 
@@ -32,7 +32,7 @@ public class Assosiation{
 		while(res.next()){
 			Assosiation assosiation = new Assosiation();
 			assosiation.setId(res.getInt("id"));
-			assosiation.setChair(res.getInt("chair"));
+			assosiation.setChair(res.getString("chair"));
 			assosiation.setName(res.getString("name"));
 			assosiation.setInformation(res.getString("information"));
 			assosiation.setTeacher(res.getString("teacher"));
@@ -48,7 +48,7 @@ public class Assosiation{
 		JSONObject json = new JSONObject(str);
 		Assosiation assosiation = new Assosiation();
 		assosiation.setId(json.optInt("id"));
-		assosiation.setChair(json.optInt("chair"));
+		assosiation.setChair(json.optString("chair"));
 		assosiation.setName(json.optString("name"));
 		assosiation.setInformation(json.optString("information"));
 		assosiation.setTeacher(json.optString("teacher"));
@@ -65,11 +65,27 @@ public class Assosiation{
 		this.id = id;
 	}
 
-	public int getChair() {
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getInformation() {
+		return information;
+	}
+
+	public void setInformation(String information) {
+		this.information = information;
+	}
+
+	public String getChair() {
 		return chair;
 	}
 
-	public void setChair(int chair) {
+	public void setChair(String chair) {
 		this.chair = chair;
 	}
 
@@ -87,21 +103,5 @@ public class Assosiation{
 
 	public void setTeacher_tel(String teacher_tel) {
 		this.teacher_tel = teacher_tel;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getInformation() {
-		return information;
-	}
-
-	public void setInformation(String information) {
-		this.information = information;
 	}
 }

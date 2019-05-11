@@ -44,7 +44,11 @@ public class ParseJson {
 //			chars[0] -= 32;
 			method_name += String.valueOf(chars);
 			try {
-				Method method = targetClazz.getDeclaredMethod(method_name, String.class);
+				Method method;
+				if(name.equals("id"))
+					method = targetClazz.getDeclaredMethod(method_name, int.class);
+				else
+					method = targetClazz.getDeclaredMethod(method_name, String.class);
 
 				//调用setter
 				method.invoke(obj, json.opt(name));
@@ -65,7 +69,7 @@ public class ParseJson {
 
 	public static void main(String[] args) {
 		try {
-			test tester = (test) getModel(test.class, "{'test_1':'hi','test_2':'hey'}");
+			test tester = (test) getModel(test.class.newInstance().getClass(), "{'test_1':'hi','test_2':'hey'}");
 			System.out.println(tester.getTest_1());
 			System.out.println(tester.getTest_2());
 		} catch (Exception e) {

@@ -34,7 +34,7 @@ public class DBManger {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, assosiation.getName());
 			pst.setString(2, assosiation.getInformation());
-			pst.setInt(3, assosiation.getChair());
+			pst.setString(3, assosiation.getChair());
 			pst.setString(4, assosiation.getTeacher());
 			pst.setString(5, assosiation.getTeacher_tel());
 			pst.execute();
@@ -106,7 +106,7 @@ public class DBManger {
 			pst.setInt(1, assosiation.getId());
 			pst.setString(2, assosiation.getName());
 			pst.setString(3, assosiation.getInformation());
-			pst.setInt(4, assosiation.getChair());
+			pst.setString(4, assosiation.getChair());
 			pst.setString(5, assosiation.getTeacher());
 			pst.setString(6, assosiation.getTeacher_tel());
 			pst.execute();
@@ -129,18 +129,40 @@ public class DBManger {
 		String sql = "insert into members(yiban_id,sex,college,sno,assosiation,grade,position) values(?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pst = conn.prepareStatement(sql);
-			pst.setInt(1,member.getYiban_id());
-			pst.setInt(2,member.getSex());
+			pst.setString(1,member.getYiban_id());
+			pst.setString(2,member.getSex());
 			pst.setString(3,member.getCollege());
-			pst.setInt(4,member.getSno());
-			pst.setInt(5,member.getAssosiation());
-			pst.setInt(6,member.getGrade());
-			pst.setInt(7,member.getPosition());
+			pst.setString(4,member.getSno());
+			pst.setString(5,member.getAssosiation());
+			pst.setString(6,member.getGrade());
+			pst.setString(7,member.getPosition());
 			pst.execute();
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
+		}
+	}
+
+	public ResultSet exec(String sql,String ContainResultSet){
+		try {
+			Statement state = conn.createStatement();
+			ResultSet res = state.executeQuery(sql);
+			return res;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public boolean exec(String sql){
+		try {
+			Statement state = conn.createStatement();
+			boolean res = state.execute(sql);
+			return res;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return  false;
 		}
 	}
 
@@ -150,13 +172,13 @@ public class DBManger {
 		try {
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setInt(1,member.getId());
-			pst.setInt(2,member.getYiban_id());
-			pst.setInt(3,member.getSex());
+			pst.setString(2,member.getYiban_id());
+			pst.setString(3,member.getSex());
 			pst.setString(4,member.getCollege());
-			pst.setInt(5,member.getSno());
-			pst.setInt(6,member.getAssosiation());
-			pst.setInt(7,member.getGrade());
-			pst.setInt(8,member.getPosition());
+			pst.setString(5,member.getSno());
+			pst.setString(6,member.getAssosiation());
+			pst.setString(7,member.getGrade());
+			pst.setString(8,member.getPosition());
 			pst.execute();
 			return true;
 		} catch (SQLException e) {
@@ -237,7 +259,7 @@ public class DBManger {
 	public void testPST() throws SQLException {
 		PreparedStatement pst = conn.prepareStatement("insert * into assosiation(name,id) values(?,?)");
 		pst.setString(1,"关爱智障协会");
-		pst.setInt(2,999);
+		pst.setString(2,"999");
 		System.out.println(pst.toString().split(": ")[1]);
 	}
 

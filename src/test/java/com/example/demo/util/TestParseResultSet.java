@@ -24,9 +24,10 @@ public class TestParseResultSet {
 	@Test
 	public void testParseResultSet(){
 		try {
-			Stack<Member> stack = ParseResultSet.getStack(new Member(),dbManger.readAllMembers());
+			ParseResultSet parseResultSet = new ParseResultSet();
+			Stack<Member> stack = parseResultSet.getStack(new Member(),dbManger.readAllMembers());
 			stack.forEach((Member member )->{
-				System.out.println(member.getId());
+				System.out.println("id:"+member.getId());
 			});
 		} catch (Exception e) {
 			e.printStackTrace();

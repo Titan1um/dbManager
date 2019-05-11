@@ -15,13 +15,13 @@ public class Member {
 
 
 	private int id;
-	private int yiban_id;
-	private int sex;
+	private String yiban_id;
+	private String sex;
 	private String college;
-	private int sno;
-	private int assosiation;
-	private int grade;
-	private int position;
+	private String sno;
+	private String assosiation;
+	private String grade;
+	private String position;
 
 	/**
 	* @Description: ResultSet转Member
@@ -35,13 +35,13 @@ public class Member {
 		while(res.next()){
 			Member member = new Member();
 			member.setId(res.getInt("id"));
-			member.setYiban_id(res.getInt("yiban_id"));
-			member.setSex(res.getInt("sex"));
+			member.setYiban_id(res.getString("yiban_id"));
+			member.setSex(res.getString("sex"));
 			member.setCollege(res.getString("college"));
-			member.setSno(res.getInt("sno"));
-			member.setAssosiation(res.getInt("assosiation"));
-			member.setGrade(res.getInt("grade"));
-			member.setPosition(res.getInt("position"));
+			member.setSno(res.getString("sno"));
+			member.setAssosiation(res.getString("assosiation"));
+			member.setGrade(res.getString("grade"));
+			member.setPosition(res.getString("position"));
 			stack.push(member);
 		}
 
@@ -52,13 +52,13 @@ public class Member {
 		JSONObject json = new JSONObject(str);
 		Member member = new Member();
 		member.setId(json.optInt("id"));
-		member.setYiban_id(json.optInt("yiban_id"));
-		member.setSex(json.optInt("sex"));
+		member.setYiban_id(json.optString("yiban_id"));
+		member.setSex(json.optString("sex"));
 		member.setCollege(json.optString("college"));
-		member.setSno(json.optInt("sno"));
-		member.setAssosiation(json.optInt("assosiation"));
-		member.setGrade(json.optInt("grade"));
-		member.setPosition(json.optInt("position"));
+		member.setSno(json.optString("sno"));
+		member.setAssosiation(json.optString("assosiation"));
+		member.setGrade(json.optString("grade"));
+		member.setPosition(json.optString("position"));
 
 		return member;
 	}
@@ -71,19 +71,19 @@ public class Member {
 		this.id = id;
 	}
 
-	public int getYiban_id() {
+	public String getYiban_id() {
 		return yiban_id;
 	}
 
-	public void setYiban_id(int yiban_id) {
+	public void setYiban_id(String yiban_id) {
 		this.yiban_id = yiban_id;
 	}
 
-	public int getSex() {
+	public String getSex() {
 		return sex;
 	}
 
-	public void setSex(int sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 
@@ -95,35 +95,35 @@ public class Member {
 		this.college = college;
 	}
 
-	public int getSno() {
+	public String getSno() {
 		return sno;
 	}
 
-	public void setSno(int sno) {
+	public void setSno(String sno) {
 		this.sno = sno;
 	}
 
-	public int getAssosiation() {
+	public String getAssosiation() {
 		return assosiation;
 	}
 
-	public void setAssosiation(int assosiation) {
+	public void setAssosiation(String assosiation) {
 		this.assosiation = assosiation;
 	}
 
-	public int getGrade() {
+	public String getGrade() {
 		return grade;
 	}
 
-	public void setGrade(int grade) {
+	public void setGrade(String grade) {
 		this.grade = grade;
 	}
 
-	public int getPosition() {
+	public String getPosition() {
 		return position;
 	}
 
-	public void setPosition(int position) {
+	public void setPosition(String position) {
 		this.position = position;
 	}
 }

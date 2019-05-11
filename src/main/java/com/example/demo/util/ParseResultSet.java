@@ -15,28 +15,35 @@ import java.util.Stack;
  * @author: jun
  */
 public class ParseResultSet {
-	public static <T> Stack<T> getStack(T target, ResultSet res) throws Exception {
+	public <T> Stack<T> getStack(T target, ResultSet res) throws Exception {
 		Stack<T> stack = new Stack<>();
 
 		ResultSetMetaData metaData = res.getMetaData();//获取键名
 		int columnCount = metaData.getColumnCount();
 		while(res.next()){
 			JSONObject json = new JSONObject();
-			for(int i = 0;i<columnCount;i++){
-				json.put(metaData.getColumnName(i),res.getObject(i));
+			for(int i = 1;i<=columnCount;i++){
+				if(metaData.getColumnName(i).equals("id"))
+					json.put(metaData.getColumnName(i),res.getInt(i));
+				else
+					json.put(metaData.getColumnName(i),res.getString(i));
 			}
-			ParseJson.getModel(target.getClass(),json.toString());
+			stack.push((T) ParseJson.getModel(target.getClass(),json.toString()));
 		}
 
 		return stack;
 	}
-	public static <T> Stack<T> getStack(T target){
+	public <T> Stack<T> getStack(T target){
 		Stack<T> stack = new Stack<T>();
 		stack.push(target);
 		return stack;
 	}
 
-	public static void main(String[] args){
-		Stack<User> stack = getStack(new User());
+	public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+//		Stack<User> stack = new ParseResultSet().getStack(new User());
+		Class tgc = Class.forName("com.example.demo.models.User");
+		Stack stack = new ParseResultSet().getStack(tgc.newInstance());
+		User user = (User) stack.pop();
+		System.out.println(user.getId());
 	}
 }
