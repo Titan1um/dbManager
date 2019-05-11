@@ -106,4 +106,18 @@ public class Home {
 			return "Illegal operation!";
 		}
 	}
+
+	@GetMapping("/v3")
+	public String V3(HttpServletRequest req){
+		try {
+			String tmp = req.getParameter("data");
+			tmp = tmp.replace('*','{');
+			tmp = tmp.replace('*','}');
+			System.out.println(tmp);
+			return unifyCRUDUtilV2.unify(req.getParameter("operation_table"), req.getParameter("operation"), tmp);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "Illegal operation!";
+		}
+	}
 }
