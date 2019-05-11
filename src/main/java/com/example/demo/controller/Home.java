@@ -5,6 +5,7 @@ import com.example.demo.service.AssosiationCRUD;
 import com.example.demo.service.MemberCRUD;
 import com.example.demo.util.EAuthorizer;
 import com.example.demo.util.UnifyCRUDUtil;
+import com.example.demo.util.UnifyCRUDUtilV2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,10 +18,12 @@ public class Home {
 
 	private final String _PARAMETER_CODE_ = "code";
 	private UnifyCRUDUtil unifyCRUDUtil;
+	private UnifyCRUDUtilV2 unifyCRUDUtilV2;
 
 	@Autowired
-	public Home(UnifyCRUDUtil unifyCRUDUtil) {
+	public Home(UnifyCRUDUtil unifyCRUDUtil,UnifyCRUDUtilV2 unifyCRUDUtilV2) {
 		this.unifyCRUDUtil = unifyCRUDUtil;
+		this.unifyCRUDUtilV2 = unifyCRUDUtilV2;
 	}
 
 	@GetMapping("/hi")
@@ -94,4 +97,13 @@ public class Home {
 	}
 
 
+	@GetMapping("/v2")
+	public String V2(HttpServletRequest req){
+		try {
+			return unifyCRUDUtilV2.unify(req.getParameter("operation_table"), req.getParameter("operation"), req.getParameter("data"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "Illegal operation!";
+		}
+	}
 }
