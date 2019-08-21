@@ -18,6 +18,9 @@ public class Application {
 	private String reject_message_2;
 	private String reject_message_3;
 	private String classroom;
+	private String ismedia;
+	private String member_phone;
+	private String classnum;
 
 	public int getId() {
 		return id;
@@ -113,5 +116,29 @@ public class Application {
 
 	public void setClassroom(String classroom) {
 		this.classroom = classroom;
+	}
+
+	public String getIsmedia() {
+		return ismedia;
+	}
+
+	public void setIsmedia(String ismedia) {
+		this.ismedia = ismedia;
+	}
+
+	public String getMember_phone() {
+		return member_phone;
+	}
+
+	public void setMember_phone(String member_phone) {
+		this.member_phone = member_phone;
+	}
+
+	public String getClassnum() {
+		return classnum;
+	}
+
+	public void setClassnum(String classnum) {
+		this.classnum = classnum;
 	}
 }

@@ -42,9 +42,9 @@ public class UnifyCRUDUtilV2 {
 			case "2":
 			case "3":
 				boolean resBoolean = dbManger.exec(sql);
-				return "done!";
+				return "[{\"status\":200,\"data\":\"done!\"}]";
 				default:
-					return "Illegal operation!";
+					return "[{\"status\":400,\"data\":\"Illegal operation!\"}]";
 		}
 
 	}

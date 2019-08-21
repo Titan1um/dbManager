@@ -111,13 +111,13 @@ public class Home {
 	public String V3(HttpServletRequest req){
 		try {
 			String tmp = req.getParameter("data");
-			tmp = tmp.replace('*','{');
-			tmp = tmp.replace('*','}');
-			System.out.println(tmp);
+			tmp = tmp.replace("@","{");
+			tmp = tmp.replace("*","}");
+			System.out.println("tmpSTR======"+tmp);
 			return unifyCRUDUtilV2.unify(req.getParameter("operation_table"), req.getParameter("operation"), tmp);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "Illegal operation!";
+			return "[{\"status\":400,\"data\":\"Illegal operation!\"}]";
 		}
 	}
 }
